@@ -71,7 +71,7 @@ public class ctrlAbogado implements MouseListener, KeyListener {
             } else {
                 try {
                     //Asignar lo de la vista al modelo al momento de darle clic a actualizar
-                    modelo.setNombre_Abogado(vista.txtCorreo.getText());
+                    modelo.setNombre_Abogado(vista.txtNombre.getText());
                     modelo.setEdad_Abogado(Integer.parseInt(vista.txtEdad.getText()));
                     modelo.setPeso_Abogado(Double.parseDouble(vista.txtPeso.getText()));
                     modelo.setCorreo_Abogado(vista.txtCorreo.getText());

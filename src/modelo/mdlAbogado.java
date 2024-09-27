@@ -86,7 +86,7 @@ public class mdlAbogado {
         Connection conexion = ClaseConexion.getConexion();
         //Definimos el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{ "Nombre", "Edad", "Peso" , "Correo"});
+        modelo.setColumnIdentifiers(new Object[]{ "UUID_Abogado", "Nombre_Abogado", "Edad_Abogado" , "Peso_Abogado","Correo_Abogado"});
         try {
             //Consulta a ejecutar
             String query = "SELECT * FROM tbAbogado";
@@ -98,6 +98,7 @@ public class mdlAbogado {
             while (rs.next()) {
                 //Llenamos el modelo por cada vez que recorremos el resultSet
                 modelo.addRow(new Object[]{
+                    rs.getString("UUID_Abogado"), 
                     rs.getString("Nombre_Abogado"), 
                     rs.getInt("Edad_Abogado"), 
                     rs.getDouble("Peso_Abogado"),
@@ -168,12 +169,14 @@ public class mdlAbogado {
     public void Buscar(JTable tabla, JTextField miTextField) {
         //Creamos una variable igual a ejecutar el método de la clase de conexión
         Connection conexion = ClaseConexion.getConexion();
+        
+
 
         //Definimos el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"Nombre", "Edad", "Peso", "Correo"});
         try {
-            String sql = "SELECT * FROM tbAbogado WHERE nombre LIKE ? || '%'";
+            String sql = "SELECT * FROM tbAbogado WHERE Nombre_Abogado LIKE ? || '%'";
             PreparedStatement deleteEstudiante = conexion.prepareStatement(sql);
             deleteEstudiante.setString(1, miTextField.getText());
             ResultSet rs = deleteEstudiante.executeQuery();
